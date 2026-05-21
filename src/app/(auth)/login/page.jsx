@@ -15,7 +15,9 @@ import {
 import { Eye } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
+import { IoMdLogIn } from "react-icons/io";
 
 const LoginPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,7 +33,7 @@ const LoginPage = () => {
       callbackURL: "/",
     });
     if (data) {
-      toast.success("SingIn SuccessFully");
+      toast.success("LoginIn SuccessFully");
     }
     if (error) {
       toast.error(error.message);
@@ -48,9 +50,9 @@ const LoginPage = () => {
   return (
     <Card className="mx-5 md:mx-auto md:w-125 py-10 my-30 rounded hover: translate-0 scale-1.5">
       <div className="text-center space-y-1">
-        <p className="text-4xl mb-5">☀️</p>
+        <p className=" flex justify-center text-4xl mb-5"> <IoMdLogIn /></p>
         <h1 className="text-center text-2xl font-bold">Welcome Back</h1>
-        <p className="text-gray-500">Login to your SummerCart account</p>
+        <p className="text-gray-500">Login to your Ideas Platform account</p>
       </div>
 
       <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>

@@ -16,8 +16,8 @@ import { Eye } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
-import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,7 +42,7 @@ const RegisterPage = () => {
     }
 
     if (data) {
-      toast.success("SignUp successful");
+      toast.success("Register is successful");
       router.push("/");
       router.refresh();
     }
@@ -61,7 +61,7 @@ const RegisterPage = () => {
         <p className="text-4xl mb-5">🌊</p>
         <h1 className="text-center text-2xl font-bold">Create Account</h1>
         <p className="text-gray-500">
-          Join SummerCart today — it&lsquo;s free!
+          Join  Ideas Platform  today — it&lsquo;s free!
         </p>
       </div>
 
