@@ -35,10 +35,12 @@ const LoginPage = () => {
     if (data) {
       toast.success("LoginIn SuccessFully");
     }
+
+  
+
     if (error) {
       toast.error(error.message);
     }
-    console.log({data, error})
   };
 
   const handleGoogleLoginIn = async () => {

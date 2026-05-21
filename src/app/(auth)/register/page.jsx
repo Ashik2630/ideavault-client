@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
+import { GiArchiveRegister } from "react-icons/gi";
 
 const RegisterPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -46,7 +47,6 @@ const RegisterPage = () => {
       router.push("/");
       router.refresh();
     }
-    console.log({data, error})
   };
 
   const handleGoogleLogIn = async () => {
@@ -58,7 +58,7 @@ const RegisterPage = () => {
   return (
     <Card className=" mx-5 md:mx-auto md:w-125 py-5 my-10 rounded hover: translate-0 scale-1.5">
       <div className="text-center space-y-1">
-        <p className="text-4xl mb-5">🌊</p>
+        <p className="text-5xl mb-5 flex justify-center"><GiArchiveRegister/></p>
         <h1 className="text-center text-2xl font-bold">Create Account</h1>
         <p className="text-gray-500">
           Join  Ideas Platform  today — it&lsquo;s free!
