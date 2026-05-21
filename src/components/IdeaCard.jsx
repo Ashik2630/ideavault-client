@@ -1,10 +1,11 @@
-import {  Chip } from '@heroui/react';
+import {  Button, Chip } from '@heroui/react';
 import Image from 'next/image';
-import React from 'react';
+import Link from 'next/link';
+import {  GoArrowRight } from 'react-icons/go';
 
 const IdeaCard = ({ idea }) => {
-    // Destructure the properties we need for the card UI
-    const { ideaTitle, shortDescription, category, imageUrl } = idea;
+    
+    const {_id, ideaTitle, shortDescription, category, imageUrl } = idea;
 
     return (
        <div
@@ -51,20 +52,12 @@ const IdeaCard = ({ idea }) => {
                     </div>
 
                     {/* Upgraded Call to Action Button */}
-                    <button className="flex items-center justify-center bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2 px-5 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                    <Link href={`/ideas/${_id}`}>
+                    <Button className="flex items-center justify-center bg-[#155dfc] hover:bg-indigo-600 text-white font-semibold py-2 px-5 rounded-xl transition-all duration-300 text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5">
                         View Details
-                        {/* Little arrow that animates on hover */}
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            className="h-4 w-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" 
-                            fill="none" 
-                            viewBox="0 0 24 24" 
-                            stroke="currentColor" 
-                            strokeWidth={2}
-                        >
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </button>
+                       <GoArrowRight />
+                    </Button>
+                    </Link>
                     
                 </div>
             </div>

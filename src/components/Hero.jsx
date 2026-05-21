@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Button } from '@heroui/react';
 
 const IdeaEvolutionSlider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -45,7 +46,7 @@ const IdeaEvolutionSlider = () => {
                     onMouseLeave={() => setIsHovered(false)}
                     className="relative w-full aspect-video bg-[#1e1e1d] rounded-[2rem] overflow-hidden border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.8)] group transition-all duration-500 hover:border-white/10"
                 >
-                    
+                     
                     {/* Horizontal Translation Track */}
                     <div 
                         className="flex w-full h-full transition-transform duration-1000 cubic-bezier(0.4, 0, 0.2, 1)"
@@ -59,6 +60,7 @@ const IdeaEvolutionSlider = () => {
                                 <h1 className="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight leading-none">Idea Evolution Journey</h1>
                                 <p className="text-xl md:text-2xl text-[#7c66dc] font-medium tracking-wide">Spark to Scale: The Engineering Odyssey</p>
                             </div>
+                            
                         </div>
 
                         {/* Slide 2: Phase 01 Intro Section with Big Art */}
@@ -271,7 +273,7 @@ const IdeaEvolutionSlider = () => {
                         ))}
                     </div>
                 </div>
-                
+               
             </div>
         </div>
     );
