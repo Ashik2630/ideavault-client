@@ -25,7 +25,7 @@ const CoFounderRadar = () => {
     }
   ];
     return (
-        <section className="py-16 bg-base-100">
+        <section className="py-16 ">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold mb-2">🤝 Co-Founder Collaboration Radar</h2>
         <p className="text-base-content/70 mb-10 max-w-xl mx-auto">

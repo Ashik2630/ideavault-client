@@ -28,10 +28,10 @@ const SuccessSpotlight = () => {
     }
   ];
     return (
-       <section className="py-16 bg-base-200">
+       <section className="py-16 ">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold mb-2">🚀 Success Spotlight</h2>
-        <p className="text-base-content/70 mb-10 max-w-xl mx-auto">
+        <p className="text-base-content/70 mb-10 max-w-xl mx-auto ">
           See how raw concepts posted by our community evolved into validated, growing projects.
         </p>
         

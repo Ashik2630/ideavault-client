@@ -8,7 +8,7 @@ const IdeasPage = async() => {
   const allIdeas = await fetchIdeasData();
   
   return (
-    <div className="min-h-screen bg-slate-50 my-10">
+    <div className="min-h-screen  my-10">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl md:text-6xl font-bold mb-4">
@@ -19,10 +19,10 @@ const IdeasPage = async() => {
           your curiosity.
         </p>
       </div>
-      <div className="flex justify-center p-8 bg-gray-50">
+      <div className="flex justify-center p-8 ">
       
       {/* Search UI Component */}
-      <div className="flex items-center w-full max-w-2xl bg-white border border-gray-200 rounded-full p-1.5 shadow-sm">
+      <div className="flex items-center w-full max-w-2xl  border border-gray-200 rounded-full p-1.5 shadow-sm">
         
         {/* Search Icon */}
         <div className="pl-4 pr-2">
@@ -57,7 +57,7 @@ const IdeasPage = async() => {
       </div>
       
     </div>
-      <main className="container mx-auto bg-[#f9f9fb] px-4 py-16 sm:px-6 lg:px-8">
+      <main className="container mx-auto  px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-12">
           <h2 className="text-2xl font-bold flex items-center gap-2">
             <FcIdea className="text-3xl" /> All Ideas{" "}

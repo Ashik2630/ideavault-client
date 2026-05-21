@@ -1,5 +1,5 @@
 "use client";
-// import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import { Check, EyeSlash } from "@gravity-ui/icons";
 import {
   Button,
@@ -25,20 +25,21 @@ const LoginPage = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // const { data, error } = await authClient.signIn.email({
-    //   email,
-    //   password,
-    //   callbackURL: "/",
-    // });
-    // if (data) {
-    //   toast.success("SingIn SuccessFully");
-    // }
-    // if (error) {
-    //   toast.error(error.message);
-    // }
+    const { data, error } = await authClient.signIn.email({
+      email,
+      password,
+      callbackURL: "/",
+    });
+    if (data) {
+      toast.success("SingIn SuccessFully");
+    }
+    if (error) {
+      toast.error(error.message);
+    }
+    console.log({data, error})
   };
 
-  const handleGoogleSingIn = async () => {
+  const handleGoogleLoginIn = async () => {
     await authClient.signIn.social({
       provider: "google",
     });
@@ -121,12 +122,12 @@ const LoginPage = () => {
         <div className="flex gap-2">
           <Button
             type="submit"
-            className="bg-[#1d9e75] w-full hover:bg-[#066a4a] transition"
+            className="bg-[#155dfc] w-full hover:bg-[#155dfc] transition"
           >
             <Check />
             Login
           </Button>
-          <Button type="reset" variant="secondary" className="text-[#1d9e75]">
+          <Button type="reset" variant="secondary" className="text-[#155dfc]">
             Reset
           </Button>
         </div>
@@ -140,8 +141,8 @@ const LoginPage = () => {
 
       {/* Google Button */}
       <button
-        onClick={handleGoogleSingIn}
-        className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2.5 bg-[#1d9e75]  hover:bg-[#066a4a] transition"
+        onClick={handleGoogleLoginIn}
+        className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2.5 bg-[#155dfc]  hover:bg-[#155dfc] transition"
       >
         {/* Google Icon */}
         <FcGoogle className="text-xl" />
@@ -155,7 +156,7 @@ const LoginPage = () => {
         Don’t have an account?{" "}
         <Link
           href="/register"
-          className="text-green-600 font-medium hover:underline"
+          className="text-[#155dfc] font-medium hover:underline"
         >
           Register here
         </Link>

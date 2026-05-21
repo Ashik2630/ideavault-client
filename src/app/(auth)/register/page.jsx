@@ -1,5 +1,5 @@
 "use client";
-// import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import { Check, EyeSlash } from "@gravity-ui/icons";
 import {
   Button,
@@ -46,9 +46,10 @@ const RegisterPage = () => {
       router.push("/");
       router.refresh();
     }
+    console.log({data, error})
   };
 
-  const handleGoogleSingIn = async () => {
+  const handleGoogleLogIn = async () => {
     await authClient.signIn.social({
       provider: "google",
     });
@@ -147,12 +148,12 @@ const RegisterPage = () => {
         <div className="flex gap-2">
           <Button
             type="submit"
-            className="bg-[#1d9e75] w-full hover:bg-[#066a4a] transition"
+            className="bg-[#155dfc] w-full hover:bg-[#155dfc] transition"
           >
             <Check />
             Create Account
           </Button>
-          <Button type="reset" variant="secondary" className=" text-[#1d9e75]">
+          <Button type="reset" variant="secondary" className=" text-[#155dfc]">
             Reset
           </Button>
         </div>
@@ -166,8 +167,8 @@ const RegisterPage = () => {
 
       {/* Google Button */}
       <button
-        
-        className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2.5 bg-[#1d9e75]  hover:bg-[#066a4a] transition"
+        onClick={handleGoogleLogIn}
+        className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2.5 bg-[#155dfc]  hover:bg-[#155dfc] transition"
       >
         {/* Google Icon */}
         <FcGoogle className="text-xl" />
@@ -181,7 +182,7 @@ const RegisterPage = () => {
         Already have an account?
         <Link
           href="/login"
-          className="text-green-600 font-medium hover:underline"
+          className="text-[#155dfc] font-medium hover:underline"
         >
           Login here
         </Link>

@@ -38,7 +38,7 @@ const PlatformDashboard = () => {
     { name: "FinTech Systems", percentage: 12, color: "bg-rose-500" }
   ];
     return (
-        <section className="py-20 bg-linear-to-b from-base-100 via-base-200 to-base-100 transition-colors duration-300 overflow-hidden">
+        <section className="py-20  transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-4 max-w-6xl">
         
         {/* Section Heading */}
