@@ -28,7 +28,7 @@ const MyInteractionsPage = async () => {
         </p>
       </div>
       <div>
-        <div className="w-full container mx-auto p-6 bg-white">
+        <div className="w-full container mx-auto p-6 ">
           <div className="border-b border-gray-200">
             <nav className="-mb-px flex space-x-8" aria-label="Tabs">
               <Link
@@ -42,7 +42,7 @@ const MyInteractionsPage = async () => {
 
           {comments.map((comment) => (
             <div key={comment._id} className="mt-4 first:mt-0">
-              <div className="flex gap-4 bg-gray-50 rounded-lg p-8 shadow-sm border border-gray-100 container mx-auto">
+              <div className="flex gap-4  rounded-lg p-8 shadow-sm border container mx-auto">
                 <Avatar>
                   <Avatar.Image
                     alt="John Doe"
