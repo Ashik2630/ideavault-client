@@ -1,14 +1,21 @@
-export const  fetchIdeasData = async(search = "") => {
-    const res = await fetch(`${process.env.NEXT_SERVER_URL}/ideasAll?search=${search}`);
-    const data = await res.json();
-    return data
-}
+export const fetchIdeasData = async (search = "", category = "") => {
+    const params = new URLSearchParams();
+    if (search) params.set("search", search);
+    if (category) params.set("category", category);
 
-export const  fetchTrendingData = async() => {
+    const url = `${process.env.NEXT_SERVER_URL}/ideasAll?${params.toString()}`;
+    console.log(url)
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+};
+
+
+export const fetchTrendingData = async () => {
     const res = await fetch(`${process.env.NEXT_SERVER_URL}/trending`);
     const data = await res.json();
     return data;
-}
+};
 
 
 

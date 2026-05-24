@@ -1,16 +1,15 @@
+import Filters from "@/components/Filters";
 import IdeaCard from "@/components/IdeaCard";
 import SearchBur from "@/components/SearchBur";
 import { fetchIdeasData } from "@/lib/data";
-import { Button } from "@heroui/react";
 import React from "react";
 import { FcIdea } from "react-icons/fc";
 
-const IdeasPage = async({searchParams}) => {
+const IdeasPage = async ({ searchParams }) => {
 
   const sParams = await searchParams;
-
-
-  const allIdeas = await fetchIdeasData(sParams?.search || "");
+  // console.log(sParams)
+  const allIdeas = await fetchIdeasData(sParams?.search || "", sParams?.category || "");
   
   return (
     <div className="min-h-screen  my-10">
@@ -35,11 +34,11 @@ const IdeasPage = async({searchParams}) => {
           <h2 className="text-2xl font-bold flex items-center gap-2">
             <FcIdea className="text-3xl" /> All Ideas{" "}
           </h2>
-          <Button variant="flat">Filters</Button>
+          <Filters/>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {
-            allIdeas?.map(idea => <IdeaCard key={idea._id} idea={idea}/>)
+            allIdeas?.map(idea => <IdeaCard key={idea._id} idea={idea} />)
           }
         </div>
       </main>

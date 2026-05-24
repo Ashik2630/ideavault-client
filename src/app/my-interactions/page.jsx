@@ -1,4 +1,5 @@
 import { Avatar } from "@heroui/react";
+import Link from "next/link";
 
 const MyInteractionsPage = async () => {
   const res = await fetch(`http://localhost:8080/comments`);
@@ -15,21 +16,21 @@ const MyInteractionsPage = async () => {
         </p>
       </div>
       <div>
-        <div class="w-full container mx-auto p-6 bg-white">
-          <div class="border-b border-gray-200">
-            <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-              <a
+        <div className="w-full container mx-auto p-6 bg-white">
+          <div className="border-b border-gray-200">
+            <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+              <Link
                 href="#"
-                class="border-indigo-600 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
+                className="border-indigo-600 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
               >
                 Comments ({comments.length} )
-              </a>
+              </Link>
             </nav>
           </div>
 
           {comments.map((comment) => (
-            <div key={comment.id} class="mt-4 first:mt-0">
-              <div class="flex gap-4 bg-gray-50 rounded-lg p-8 shadow-sm border border-gray-100 container mx-auto">
+            <div key={comment._id} className="mt-4 first:mt-0">
+              <div className="flex gap-4 bg-gray-50 rounded-lg p-8 shadow-sm border border-gray-100 container mx-auto">
                 <Avatar>
                   <Avatar.Image
                     alt="John Doe"
@@ -41,15 +42,15 @@ const MyInteractionsPage = async () => {
                 </Avatar>
 
                 <div>
-                  <h3 class="text-gray-900 text-2xl font-bold mb-2">
+                  <h3 className="text-gray-900 text-2xl font-bold mb-2">
                     {comment.ideaTitle || "Idea Title"}
                   </h3>
 
                   {/* Dynamic Comment Body */}
-                  <p class="text-gray-600 text-sm mb-3">{comment.text}</p>
+                  <p className="text-gray-600 text-sm mb-3">{comment.text}</p>
 
                   {/* Dynamic Date */}
-                  <span class="text-gray-400 text-xs block">
+                  <span className="text-gray-400 text-xs block">
                     {comment.createdAt}
                   </span>
                 </div>

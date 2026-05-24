@@ -14,7 +14,7 @@ const IdeaCard = ({ idea }) => {
     <div className="group flex flex-col  rounded-4xl   overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       <div className="relative overflow-hidden aspect-16/10">
         <Image
-          alt={ideaTitle || "Idea illustration"} // Fallback string if ideaTitle is blank
+          alt={ideaTitle || "Idea illustration"} 
           className="object-cover group-hover:scale-110 transition-transform duration-700"
           src={
             imageUrl ||
@@ -55,7 +55,7 @@ const IdeaCard = ({ idea }) => {
                   user?.image ||
                   "https://i.ibb.co/n8zTkcGm/photo-1498837167922-ddd27525d352.jpg"
                 }
-                alt={user?.name}
+                alt={user?.name || "User Avatar"}
                 width={30}
                 height={30}
               />

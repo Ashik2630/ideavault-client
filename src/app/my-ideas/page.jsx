@@ -11,8 +11,9 @@ const MyIdeasPage = async () => {
 
   const res = await fetch(`https://ideavault-server-sigma.vercel.app/ideasAll/${userId}`);
   const myIdeasData = await res.json();
-  if (!myIdeasData) {
-    return <NotFoundData/>
+  
+  if (myIdeasData.length === 0) {
+    return <NotFoundData/> 
   }
   return (
     <div className="container mx-auto my-10">

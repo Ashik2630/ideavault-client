@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
-  const router = useRouter(); 
+ 
 
   const links = (
     <>
@@ -49,8 +49,7 @@ const Navbar = () => {
   const handleLogOut = async () => {
     await authClient.signOut();
     window.location.reload();
-    // router.push("/");
-    // router.refresh();
+    
   };
   return (
     <div className="navbar shadow px-4 sm:px-8 sticky top-0 z-10">
@@ -104,7 +103,7 @@ const Navbar = () => {
               />
               <circle cx="12" cy="10" r="1.5" className="fill-blue-600" />
             </svg>
-            <span className="text-xl font-bold tracking-tight text-base-content">
+            <span className="text-xl font-bold tracking-tight ">
               Idea<span className="text-blue-600">Vault</span>
             </span>
           </Link>
