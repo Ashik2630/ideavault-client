@@ -1,47 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { authClient } from "@/lib/auth-client";
 
 const UserNameUpdate = ({ user }) => {
-  const [name, setName] = useState(user?.name || "");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const updatedUser = {
-        name,
-      };
+    const name = e.target.name.value;
 
-      const res = await fetch(
-        `https://ideavault-server-sigma.vercel.app/users/${user?._id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedUser),
-        }
-      );
+    const { data, error } = await authClient.updateUser({
+      name,
+    });
 
-      const data = await res.json();
-
-      console.log(data);
-
-      if (data.modifiedCount > 0) {
-        alert("Name Updated Successfully");
-
-        window.location.reload();
-      }
-    } catch (error) {
-      console.log(error);
+    if (!error) {
+      window.location.reload();
+    } else {
+      toast.error("Failed to update profile. Please try again.");
+      return;
     }
   };
 
   return (
     <div>
       <form className="space-y-6" onSubmit={handleSubmit}>
-        
         {/* Name Field */}
         <div>
           <label
@@ -54,9 +35,8 @@ const UserNameUpdate = ({ user }) => {
           <input
             type="text"
             id="full-name"
-            name="full-name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            defaultValue={user?.name}
             className="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
           />
         </div>

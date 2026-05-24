@@ -1,6 +1,5 @@
 import UserNameUpdate from "@/components/UserNameUpdate";
 import { auth } from "@/lib/auth";
-import { User } from "lucide-react";
 import { headers } from "next/headers";
 import Image from "next/image";
 
