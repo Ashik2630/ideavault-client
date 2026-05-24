@@ -40,16 +40,19 @@ const Filters = ({ filteredData }) => {
       <select
         value={category}
         onChange={handleChange}
-        className="w-[256px] px-4 py-2 rounded-xl border border-gray-300 bg-white text-sm"
+        className="w-[256px] px-4 py-2 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm shadow-sm outline-none transition duration-200 focus:border-[#155DFC] focus:ring-2 focus:ring-[#155DFC]/20 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
       >
         <option value="">All Categories</option>
         <option value="business">Business</option>
-        <option value="healthcare">Healthcare</option>
-        <option value="agriculture">Agriculture</option>
-        <option value="foodTech">FoodTech</option>
-        <option value="edTech">EdTech</option>
-        <option value="environment">Environment</option>
-        <option value="fitness">Fitness</option>
+        <option value="Healthcare">Healthcare</option>
+        <option value="Agriculture">Agriculture</option>
+        <option value="FoodTech">FoodTech</option>
+        <option value="EdTech">EdTech</option>
+        <option value="Sharing Economy">Sharing Economy</option>
+        <option value="Travel">Travel</option>
+        <option value="HealthTech">HealthTech</option>
+        <option value="Energy">Energy</option>
+        <option value="Smart City">Smart City</option>
       </select>
 
       {/* No Data Found */}

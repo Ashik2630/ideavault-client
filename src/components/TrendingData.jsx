@@ -8,7 +8,7 @@ import IdeaCard from './IdeaCard';
 const TrendingData = async() => {
     const trendingIdeas = await fetchTrendingData();
     return (
-        <div className='container mx-auto my-10'>
+        <div className='container mx-auto my-10 px-4 md:px-0'>
             <div className='flex justify-between items-center mb-10'>
                 <h2 className='text-5xl font-bold'>Trending Ideas</h2>
                 <Link href={`/ideas`}><Button variant='outline' className={` rounded-none border-none text-[#155dfc]`}>View All <GoArrowRight /></Button></Link>

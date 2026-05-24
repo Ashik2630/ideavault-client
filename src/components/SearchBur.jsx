@@ -45,7 +45,7 @@ const SearchBur = () => {
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search for courses (e.g. Next.js, Web Design...)"
+        placeholder="Search for Ideas or Categories..."
         className="grow w-full bg-transparent outline-none text-gray-700 placeholder-gray-400 px-2 text-sm sm:text-base"
       />
 
