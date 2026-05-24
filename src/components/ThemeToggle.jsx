@@ -7,7 +7,7 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+    <button className="flex items-center justify-center p-2 mr-5  rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
        {theme === "dark" ? <Sun/>: <Moon/>} 
     </button>
   );

@@ -1,9 +1,11 @@
 "use client";
 
-
-import { Button,  Label, Modal, Surface, TextField } from "@heroui/react";
+import { Button, Label, Modal, Surface, TextField } from "@heroui/react";
+import toast from "react-hot-toast";
+import { useLoading } from "@/components/LoadingProvider";
 
 const EditComment = ({ id, text }) => {
+  const { setLoading } = useLoading();
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
@@ -12,19 +14,28 @@ const EditComment = ({ id, text }) => {
       text: editedText,
     };
 
-    console.log(editedText, 'editedText');
-    const res = await fetch(`http://localhost:8080/comments/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify( updatedComment ),
-    });
-    if(res.ok) {
-      window.location.reload(true);
+    try {
+      setLoading(true);
+      const res = await fetch(`http://localhost:8080/comments/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedComment),
+      });
+
+      if (res.ok) {
+        toast.success("Comment updated");
+        window.location.reload(true);
+        return;
+      }
+
+      toast.error("Failed to update comment");
+    } catch (err) {
+      toast.error("Failed to update comment");
+    } finally {
+      setLoading(false);
     }
-    
-    console.log(res, "res");
   };
 
   return (
@@ -39,12 +50,8 @@ const EditComment = ({ id, text }) => {
 
             <Modal.Body className="p-6">
               <Surface variant="default">
-                <form onSubmit={handleEditSubmit}  className="flex flex-col gap-4">
-                  <TextField
-                    className="w-full"
-                    name="message"
-                    variant="secondary"
-                  >
+                <form onSubmit={handleEditSubmit} className="flex flex-col gap-4">
+                  <TextField className="w-full" name="message" variant="secondary">
                     <Label>Message</Label>
                     <textarea
                       rows={4}

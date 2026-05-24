@@ -1,22 +1,35 @@
 'use client';
 import { AlertDialog, Button } from "@heroui/react";
+import toast from "react-hot-toast";
+import { useLoading } from "@/components/LoadingProvider";
 
 
 const DeleteComment = ({ id }) => {
-  
+  const { setLoading } = useLoading();
+
   const handleDelete = async () => {
-    const res = await fetch(`http://localhost:8080/comments/${id}`, {
-      method: "DELETE",
-    });
-    if(res.ok) {
-      window.location.reload(true);
+    try {
+      setLoading(true);
+      const res = await fetch(`http://localhost:8080/comments/${id}`, {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        toast.success("Comment deleted");
+        window.location.reload(true);
+        return;
+      }
+      toast.error("Failed to delete comment");
+    } catch (err) {
+      toast.error("Failed to delete comment");
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div>
       <AlertDialog>
-        <Button  variant="text" color="danger" size="sm" className="text-danger">
+        <Button variant="text" color="danger" size="sm" className="text-danger">
           Delete
         </Button>
         <AlertDialog.Backdrop>
@@ -25,9 +38,7 @@ const DeleteComment = ({ id }) => {
               <AlertDialog.CloseTrigger />
               <AlertDialog.Header>
                 <AlertDialog.Icon status="danger" />
-                <AlertDialog.Heading>
-                  Delete Comment permanently?
-                </AlertDialog.Heading>
+                <AlertDialog.Heading>Delete Comment permanently?</AlertDialog.Heading>
               </AlertDialog.Header>
               <AlertDialog.Body>
                 <p>This will permanently delete your comment.</p>
@@ -36,7 +47,7 @@ const DeleteComment = ({ id }) => {
                 <Button slot="close" variant="tertiary">
                   Cancel
                 </Button>
-                <Button onPress={handleDelete}  slot="close" variant="danger">
+                <Button onPress={handleDelete} slot="close" variant="danger">
                   Delete
                 </Button>
               </AlertDialog.Footer>

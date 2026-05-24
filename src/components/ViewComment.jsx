@@ -4,11 +4,12 @@ import { Avatar, Button } from "@heroui/react";
 import { useEffect, useState } from "react";
 import DeleteComment from "./DeleteComment";
 import EditComment from "./EditComment";
+import { useLoading } from "@/components/LoadingProvider";
 
 const ViewComment = ({ id }) => {
   const [comments, setComments] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { setLoading } = useLoading();
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -31,13 +32,12 @@ const ViewComment = ({ id }) => {
       }
     };
 
-    fetchComments();
-  }, [id]);
+    if (id) fetchComments();
+  }, [id, setLoading]);
 
-  if (loading) return <p>Loading comments...</p>;
   if (error) return <p className="text-red-500">{error}</p>;
-  if (!id) return;
-console.log(comments)
+  if (!id) return null;
+
   return (
     <div className="flex flex-col gap-4">
       {comments.map((comment) => (

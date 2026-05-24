@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 
 const MyIdeaDelete = ({ idea }) => {
   const { _id } = idea;
-  const router = useRouter();
   const handleDelete = async () => {
     const res = await fetch(`https://ideavault-server-sigma.vercel.app/ideasAll/${_id}`, {
       method: "Delete",
@@ -17,7 +16,7 @@ const MyIdeaDelete = ({ idea }) => {
     const data = await res.json();
     if (data) {
       toast.success("Successfully Delete  idea");
-      router.refresh();      
+     window.location.reload();      
     } else {
       toast.error("Failed to Delete  idea");
     }

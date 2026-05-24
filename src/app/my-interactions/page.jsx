@@ -2,7 +2,7 @@ import { Avatar } from "@heroui/react";
 import Link from "next/link";
 
 const MyInteractionsPage = async () => {
-  const res = await fetch(`http://localhost:8080/comments`);
+  const res = await fetch(`${process.env.NEXT_SERVER_URL}/comments`);
   const comments = await res.json();
 
 

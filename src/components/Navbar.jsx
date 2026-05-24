@@ -120,7 +120,7 @@ const Navbar = () => {
         <div className="navbar-end">
           <ThemeToggle />
           {!section && !isPending ? (
-            <div className="flex gap-4">
+            <div className="flex gap-4 ">
               <Link href={`/login`}>
                 <Button variant="outline" className={`rounded-md border-none`}>
                   Login
