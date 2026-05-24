@@ -28,7 +28,7 @@ const UserNameUpdate = ({ user }) => {
     <div>
       <form className="space-y-6" onSubmit={handleSubmit}>
         {/* Name Field */}
-        <div>
+        <div className="text-white">
           <label
             htmlFor="full-name"
             className="block text-sm font-medium text-gray-700 mb-2"
@@ -41,7 +41,7 @@ const UserNameUpdate = ({ user }) => {
             id="full-name"
             name="name"
             defaultValue={user?.name}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+            className="w-full px-4 py-3 border  rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
           />
         </div>
 
@@ -59,7 +59,7 @@ const UserNameUpdate = ({ user }) => {
             id="email"
             value={user?.email}
             disabled
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-gray-500 cursor-not-allowed focus:outline-none"
+            className="w-full px-4 py-3 border border-gray-200 rounded-xl text-gray-500 cursor-not-allowed focus:outline-none"
           />
 
           <p className="text-xs text-gray-400 mt-2">

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaArrowLeft, FaExclamationTriangle, FaHome } from "react-icons/fa";
+
 export const metadata = {
   title: "IdeaVault || Not Found",
 }
