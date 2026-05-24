@@ -1,26 +1,12 @@
+// app/providers.tsx
 "use client";
-import { ThemeProvider, useTheme } from "next-themes";
-import { useEffect } from "react";
 
-const ThemeSyncer = ({ children }) => {
-  const { theme, resolvedTheme } = useTheme();
-  
-  useEffect(() => {
-    const currentTheme = theme === 'system' ? resolvedTheme : theme;
-    if (currentTheme) {
-      document.documentElement.setAttribute("data-theme", currentTheme);
-    }
-  }, [theme, resolvedTheme]);
+import { ThemeProvider } from "next-themes";
 
-  return <>{children}</>;
-};
-
-const NextThemeProvider = ({ children }) => {
+export function Providers({ children }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-      <ThemeSyncer>{children}</ThemeSyncer>
+    <ThemeProvider attribute="class" defaultTheme="light">
+      {children}
     </ThemeProvider>
   );
-};
-
-export default NextThemeProvider;
+}

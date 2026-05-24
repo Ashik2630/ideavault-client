@@ -66,7 +66,7 @@ const IdeasPage = async() => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {
-            allIdeas.map(idea => <IdeaCard key={idea._id} idea={idea}/>)
+            allIdeas?.map(idea => <IdeaCard key={idea._id} idea={idea}/>)
           }
         </div>
       </main>

@@ -1,12 +1,12 @@
 "use client";
 import { Button } from "@heroui/react";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
 import { authClient, useSession } from "@/lib/auth-client";
 import { LogOut } from "lucide-react";
 import Image from "next/image";
 import { CgProfile } from "react-icons/cg";
 import { useRouter } from "next/navigation";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
   const router = useRouter(); 
@@ -48,9 +48,9 @@ const Navbar = () => {
 
   const handleLogOut = async () => {
     await authClient.signOut();
-
-    router.refresh();
-    router.push("/");
+    window.location.reload();
+    // router.push("/");
+    // router.refresh();
   };
   return (
     <div className="navbar shadow px-4 sm:px-8 sticky top-0 z-10">
@@ -174,12 +174,12 @@ const Navbar = () => {
                 >
                   <CgProfile className="w-4 h-4" /> Profile
                 </Link>
-                <button
+                <Button variant="outline"
                   onClick={handleLogOut}
-                  className="px-4 py-2 text-sm text-red-500 hover:bg-red-50 flex items-center gap-3 transition-colors text-left w-full"
+                  className="border-none px-4 py-2 text-sm text-red-500 hover:bg-red-50 flex items-center gap-3 transition-colors text-left w-full"
                 >
                   <LogOut className="w-4 h-4" /> Log Out
-                </button>
+                </Button>
               </div>
             </div>
           )}
