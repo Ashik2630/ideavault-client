@@ -4,6 +4,10 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+export const metadata = {
+  title: "IdeaVault || Filters",
+};
+
 const Filters = ({ filteredData }) => {
   const router = useRouter();
   const searchParams = useSearchParams();

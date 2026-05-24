@@ -5,6 +5,10 @@ import { fetchIdeasData } from "@/lib/data";
 import React from "react";
 import { FcIdea } from "react-icons/fc";
 
+export const metadata = {
+  title: "IdeaVault || Explore Ideas",
+}
+
 const IdeasPage = async ({ searchParams }) => {
 
   const sParams = await searchParams;

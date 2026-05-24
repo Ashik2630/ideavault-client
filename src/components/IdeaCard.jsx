@@ -4,6 +4,9 @@ import { Button, Chip } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { GoArrowRight } from "react-icons/go";
+export const metadata = {
+  title: "IdeaVault || IdeaCard",
+}
 
 const IdeaCard = ({ idea }) => {
   const { data: section } = useSession();

@@ -5,6 +5,10 @@ import toast from "react-hot-toast";
 import { FaEdit } from "react-icons/fa";
 import { getVerificationToken } from "@/lib/verification-token";
 
+export const metadata = {
+  title: "IdeaVault || My Idea Edit",
+};
+
 const MyIdeaEdit = ({ idea }) => {
   const { _id, ideaTitle, detailedDescription, shortDescription } = idea;
 

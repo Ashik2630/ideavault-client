@@ -1,8 +1,11 @@
 "use client"
 import React, { useState } from 'react';
-
+export const metadata = {
+  title: "IdeaVault || Platform Dashboard",
+  }
 const PlatformDashboard = () => {
     const [activeMetric, setActiveMetric] = useState(null);
+    
 
   const platformStats = [
     {

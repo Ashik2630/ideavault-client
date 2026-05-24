@@ -4,6 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@heroui/react';
 import { GoArrowRight } from 'react-icons/go';
+export const metadata = {
+  title: "IdeaVault || Hero",
+}
 
 const IdeaEvolutionSlider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);

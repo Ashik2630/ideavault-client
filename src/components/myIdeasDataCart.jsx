@@ -8,6 +8,10 @@ import { GoArrowRight } from "react-icons/go";
 import MyIdeaEdit from "./MyIdeaEdit";
 import MyIdeaDelete from "./MyIdeaDelete";
 
+export const metadata = {
+  title: "IdeaVault || My Ideas Data Cart",
+}
+
 const MyIdeaDataCart = ({ idea }) => {
   const { data: section } = useSession();
   const user = section?.user;

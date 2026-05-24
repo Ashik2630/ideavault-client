@@ -7,6 +7,10 @@ import EditComment from "./EditComment";
 import { useLoading } from "@/components/LoadingProvider";
 import { getVerificationToken } from "@/lib/verification-token";
 
+export const metadata = {
+  title: "IdeaVault || View Comment",
+  }
+
 const ViewComment = ({ id }) => {
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);

@@ -1,9 +1,20 @@
 import { Avatar } from "@heroui/react";
 import Link from "next/link";
 
+export const metadata = {
+  title: "IdeaVault || My Interactions",
+}
+
 const MyInteractionsPage = async () => {
   const res = await fetch(`${process.env.NEXT_SERVER_URL}/comments`);
-  const comments = await res.json();
+  const data = await res.json();
+  const comments = Array.isArray(data)
+    ? data
+    : Array.isArray(data?.comments)
+    ? data.comments
+    : Array.isArray(data?.data)
+    ? data.data
+    : [];
 
 
   return (

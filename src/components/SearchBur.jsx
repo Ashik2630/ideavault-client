@@ -3,6 +3,10 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
+export const metadata = {
+  title: "IdeaVault || Search Bar",
+  }
+
 const SearchBur = () => {
     const [search, setSearch] = useState("");
     const router = useRouter();

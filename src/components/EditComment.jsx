@@ -5,6 +5,10 @@ import toast from "react-hot-toast";
 import { useLoading } from "@/components/LoadingProvider";
 import { getVerificationToken } from "@/lib/verification-token";
 
+export const metadata = {
+  title: "IdeaVault || Edit Comment",
+}
+
 const EditComment = ({ id, text }) => {
   const { setLoading } = useLoading();
 

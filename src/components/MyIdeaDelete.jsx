@@ -4,7 +4,9 @@ import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { getVerificationToken } from "@/lib/verification-token";
-
+export const metadata = {
+  title: "IdeaVault || My Idea Delete",
+}
 
 const MyIdeaDelete = ({ idea }) => {
   const { _id } = idea;

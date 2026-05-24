@@ -4,6 +4,10 @@ import ViewComment from "./ViewComment";
 import toast from "react-hot-toast";
 import { getVerificationToken } from "@/lib/verification-token";
 
+export const metadata = {
+  title: "IdeaVault || Comments",
+}
+
 const Comments = ({ id, ideaDetail }) => {
   const {
     data: session

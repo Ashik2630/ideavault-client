@@ -2,7 +2,9 @@ import UserNameUpdate from "@/components/UserNameUpdate";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
-
+export const metadata = {
+  title: "IdeaVault || Profile",
+}
 
 const ProfilePage = async () => {
 

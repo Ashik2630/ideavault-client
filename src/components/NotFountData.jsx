@@ -1,6 +1,10 @@
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+  title: "IdeaVault || Not Found Data",
+}
+
 const NotFoundData = () => {
   return (
     <div className="flex items-center justify-center h-[60vh]  bg-gray-50">

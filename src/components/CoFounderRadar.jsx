@@ -1,5 +1,7 @@
 import React from 'react';
-
+export const metadata = {
+  title: "IdeaVault ||  Co-Founder Radar",
+}
 const CoFounderRadar = () => {
     const openings = [
     {

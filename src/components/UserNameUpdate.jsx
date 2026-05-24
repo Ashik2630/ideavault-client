@@ -2,6 +2,10 @@
 
 import { authClient } from "@/lib/auth-client";
 
+export const metadata = {
+  title: "IdeaVault || User Name Update",
+  }
+
 const UserNameUpdate = ({ user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();

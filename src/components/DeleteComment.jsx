@@ -4,6 +4,9 @@ import toast from "react-hot-toast";
 import { useLoading } from "@/components/LoadingProvider";
 import { getVerificationToken } from "@/lib/verification-token";
 
+export const metadata = {
+  title: "IdeaVault || Delete Comment",
+}
 
 const DeleteComment = ({ id }) => {
   const { setLoading } = useLoading();

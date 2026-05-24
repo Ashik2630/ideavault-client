@@ -5,8 +5,9 @@ import { authClient, useSession } from "@/lib/auth-client";
 import { LogOut } from "lucide-react";
 import Image from "next/image";
 import { CgProfile } from "react-icons/cg";
-import { useRouter } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
+
+
 
 const Navbar = () => {
  

@@ -5,6 +5,10 @@ import React from 'react';
 import { GoArrowRight } from 'react-icons/go';
 import IdeaCard from './IdeaCard';
 
+export const metadata = {
+  title: "IdeaVault || Trending Ideas",
+  }
+
 const TrendingData = async() => {
     const trendingIdeas = await fetchTrendingData();
     return (
