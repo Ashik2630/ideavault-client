@@ -3,6 +3,7 @@ import { Button, Modal, Surface } from "@heroui/react";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 import { FaEdit } from "react-icons/fa";
+import { getVerificationToken } from "@/lib/verification-token";
 
 const MyIdeaEdit = ({ idea }) => {
   const { _id, ideaTitle, detailedDescription, shortDescription } = idea;
@@ -14,11 +15,15 @@ const MyIdeaEdit = ({ idea }) => {
     const updatedIdea = Object.fromEntries(formData.entries());
 
    
-      const res = await fetch(`https://ideavault-server-sigma.vercel.app/ideasAll/${_id}`, {
+      const token = getVerificationToken();
+      const headers = {
+        "content-type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {}),
+      };
+
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ideasAll/${_id}`, {
         method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
+        headers,
         body: JSON.stringify(updatedIdea),
       });
 

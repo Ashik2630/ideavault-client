@@ -9,7 +9,7 @@ const MyIdeasPage = async () => {
   });
   const userId = session?.user.id;
 
-  const res = await fetch(`https://ideavault-server-sigma.vercel.app/ideasAll/${userId}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ideasAll/${userId}`);
   const myIdeasData = await res.json();
   
   if (myIdeasData.length === 0) {

@@ -10,7 +10,7 @@ const ProfilePage = async () => {
     headers: await headers()
   });
   const user = session?.user;
-  console.log(user);
+  // console.log(user);
   return (
     <div className="container mx-auto bg-gray-50 flex items-center justify-center p-6">
       <div className="w-full container mx-auto p-6">

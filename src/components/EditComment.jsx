@@ -3,6 +3,7 @@
 import { Button, Label, Modal, Surface, TextField } from "@heroui/react";
 import toast from "react-hot-toast";
 import { useLoading } from "@/components/LoadingProvider";
+import { getVerificationToken } from "@/lib/verification-token";
 
 const EditComment = ({ id, text }) => {
   const { setLoading } = useLoading();
@@ -16,11 +17,14 @@ const EditComment = ({ id, text }) => {
 
     try {
       setLoading(true);
-      const res = await fetch(`http://localhost:8080/comments/${id}`, {
+      const token = getVerificationToken();
+      const headers = {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {}),
+      };
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/comments/${id}`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers,
         body: JSON.stringify(updatedComment),
       });
 

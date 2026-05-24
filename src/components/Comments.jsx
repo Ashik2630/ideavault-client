@@ -2,6 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import ViewComment from "./ViewComment";
 import toast from "react-hot-toast";
+import { getVerificationToken } from "@/lib/verification-token";
 
 const Comments = ({ id, ideaDetail }) => {
   const {
@@ -27,11 +28,15 @@ const Comments = ({ id, ideaDetail }) => {
     };
 
 
-    const res = await fetch(`http://localhost:8080/comments`, {
+    const token = getVerificationToken();
+    const headers = {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {}),
+    };
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/comments`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify(comment),
     });
     if(res.ok) {

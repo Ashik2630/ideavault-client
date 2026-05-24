@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import DeleteComment from "./DeleteComment";
 import EditComment from "./EditComment";
 import { useLoading } from "@/components/LoadingProvider";
+import { getVerificationToken } from "@/lib/verification-token";
 
 const ViewComment = ({ id }) => {
   const [comments, setComments] = useState([]);
@@ -16,7 +17,9 @@ const ViewComment = ({ id }) => {
       try {
         setLoading(true);
 
-        const res = await fetch(`http://localhost:8080/comments/${id}`);
+        const token = getVerificationToken();
+        const headers = token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {};
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/comments/${id}`, { headers });
 
         if (!res.ok) {
           throw new Error("Failed to fetch comments");

@@ -4,7 +4,7 @@ export const fetchIdeasData = async (search = "", category = "") => {
     if (category) params.set("category", category);
 
     const url = `${process.env.NEXT_SERVER_URL}/ideasAll?${params.toString()}`;
-    console.log(url)
+    // console.log(url)
     const res = await fetch(url);
     const data = await res.json();
     return data;

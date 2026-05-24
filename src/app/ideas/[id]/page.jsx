@@ -28,7 +28,6 @@ const IdeaDetailsPage = async ({ params }) => {
     headers: await headers(),
   });
   const token = tokenData?.token || null;
-  // console.log(ideaDetail);
   const {
     ideaTitle,
     shortDescription,

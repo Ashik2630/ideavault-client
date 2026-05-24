@@ -3,6 +3,7 @@ import { Card } from "@heroui/react";
 import React from "react";
 import toast from "react-hot-toast";
 import { useSession } from "../../lib/auth-client";
+import { getVerificationToken } from "@/lib/verification-token";
 
 const AddIdeaPage = () => {
   const {data: session} = useSession();
@@ -18,11 +19,15 @@ const AddIdeaPage = () => {
     
     ideaData.userId = session?.user?.id;
     const apiUrl = process.env.NEXT_PUBLIC_CLIENT_API_URI || "https://ideavault-server-sigma.vercel.app";
+    const token = getVerificationToken();
+    const headers = {
+      'content-type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}`, 'x-verification-token': token } : {}),
+    };
+
     const res = await fetch(`${apiUrl}/ideasAll`, {
       method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
+      headers,
       body:JSON.stringify(ideaData)
     })
       const data = await res.json();

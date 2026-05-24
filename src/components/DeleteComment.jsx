@@ -2,6 +2,7 @@
 import { AlertDialog, Button } from "@heroui/react";
 import toast from "react-hot-toast";
 import { useLoading } from "@/components/LoadingProvider";
+import { getVerificationToken } from "@/lib/verification-token";
 
 
 const DeleteComment = ({ id }) => {
@@ -10,8 +11,13 @@ const DeleteComment = ({ id }) => {
   const handleDelete = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`http://localhost:8080/comments/${id}`, {
+      const token = getVerificationToken();
+      const headers = {
+        ...(token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {}),
+      };
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/comments/${id}`, {
         method: "DELETE",
+        headers,
       });
       if (res.ok) {
         toast.success("Comment deleted");

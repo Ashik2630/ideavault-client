@@ -2,23 +2,31 @@
 import { TrashBin } from "@gravity-ui/icons";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { getVerificationToken } from "@/lib/verification-token";
 
 
 const MyIdeaDelete = ({ idea }) => {
   const { _id } = idea;
   const handleDelete = async () => {
-    const res = await fetch(`https://ideavault-server-sigma.vercel.app/ideasAll/${_id}`, {
-      method: "Delete",
-      headers: {
-        "content-type": "application/json",
-      },
+    const token = getVerificationToken();
+    const headers = {
+      "content-type": "application/json",
+      ...(token
+        ? { Authorization: `Bearer ${token}`, "x-verification-token": token }
+        : {}),
+    };
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ideasAll/${_id}`, {
+      method: "DELETE",
+      headers,
     });
     const data = await res.json();
     if (data) {
-      toast.success("Successfully Delete  idea");
-     window.location.reload();      
+      toast.success("Successfully deleted idea");
+      window.location.reload();
     } else {
-      toast.error("Failed to Delete  idea");
+      toast.error("Failed to delete idea");
     }
   };
   return (
