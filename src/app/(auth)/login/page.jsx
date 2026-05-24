@@ -14,18 +14,17 @@ import {
 } from "@heroui/react";
 import { Eye } from "lucide-react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { IoMdLogIn } from "react-icons/io";
-import { useSearchParams } from "next/navigation"; // ১. এটি ইম্পোর্ট করুন
 
 const LoginPage = () => {
   const [isVisible, setIsVisible] = useState(false);
-  
-  const searchParams = useSearchParams(); // ২. সার্চ প্যারামস কল করুন
-  // ৩. URL থেকে callbackUrl নিন, না থাকলে ডিফল্ট "/" দিন
-  const callbackUrl = searchParams.get("callbackUrl") || "/"; 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -36,11 +35,13 @@ const LoginPage = () => {
     const { data, error } = await authClient.signIn.email({
       email,
       password,
-      callbackURL: callbackUrl, // ৪. এখানে callbackUrl ভ্যারিয়েবলটি বসিয়ে দিন
+      callbackURL: callbackUrl,
     });
-    
+
     if (data) {
-      toast.success("LoggedIn Successfully");
+      toast.success("Logged in successfully");
+      router.replace(callbackUrl);
+      return;
     }
 
     if (error) {
@@ -51,14 +52,14 @@ const LoginPage = () => {
   const handleGoogleLoginIn = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: callbackUrl, // ৫. গুগল লগইনের জন্যও callbackURL পাস করুন
+      callbackURL: callbackUrl,
     });
   };
 
   return (
-    <Card className="mx-5 md:mx-auto md:w-125 py-10 my-30 rounded hover:translate-0 scale-1.5">
+    <Card className="mx-5 md:mx-auto md:w-125 py-10 my-30 rounded hover: translate-0 scale-1.5">
       <div className="text-center space-y-1">
-        <p className="flex justify-center text-4xl mb-5"> <IoMdLogIn /></p>
+        <p className=" flex justify-center text-4xl mb-5"> <IoMdLogIn /></p>
         <h1 className="text-center text-2xl font-bold">Welcome Back</h1>
         <p className="text-gray-500">Login to your Ideas Platform account</p>
       </div>
@@ -95,6 +96,7 @@ const LoginPage = () => {
             if (!/[0-9]/.test(value)) {
               return "Password must contain at least one number";
             }
+
             return null;
           }}
         >
@@ -102,7 +104,7 @@ const LoginPage = () => {
           <InputGroup>
             <InputGroup.Input
               className="w-full max-w-70 relative"
-              placeholder="Enter your Password" // Placeholder ঠিক করা হয়েছে
+              placeholder="Enter your Email"
               type={isVisible ? "text" : "password"}
             />
             <InputGroup.Suffix className="pr-0">
@@ -112,7 +114,7 @@ const LoginPage = () => {
                 size="sm"
                 variant="ghost"
                 onPress={() => setIsVisible(!isVisible)}
-                className="absolute right-12 md:right-17"
+                className=" absolute right-12 md:right-17"
               >
                 {isVisible ? (
                   <Eye className="size-4" />
@@ -131,7 +133,7 @@ const LoginPage = () => {
         <div className="flex gap-2">
           <Button
             type="submit"
-            className="bg-[#155dfc] w-full hover:bg-[#155dfc] transition text-white" // Text color white করা হয়েছে ট্রাস্টেড লুকের জন্য
+            className="bg-[#155dfc] w-full hover:bg-[#155dfc] transition"
           >
             <Check />
             Login
@@ -141,7 +143,6 @@ const LoginPage = () => {
           </Button>
         </div>
       </Form>
-      
       {/* Divider */}
       <div className="flex items-center my-4">
         <div className="grow h-px bg-gray-300"></div>
@@ -152,8 +153,9 @@ const LoginPage = () => {
       {/* Google Button */}
       <button
         onClick={handleGoogleLoginIn}
-        className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2.5 bg-[#155dfc] hover:bg-[#155dfc] transition"
+        className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2.5 bg-[#155dfc]  hover:bg-[#155dfc] transition"
       >
+        {/* Google Icon */}
         <FcGoogle className="text-xl" />
         <span className="text-sm font-medium text-white">
           Sign in with Google

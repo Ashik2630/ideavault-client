@@ -8,12 +8,13 @@ export async function proxy(request) {
         headers: await headers(),
     })
 
-    if(!session){
-        return NextResponse.redirect(new URL('/login', request.url))
+    if (!session) {
+        const callbackUrl = `${request.nextUrl.pathname}${request.nextUrl.search}`;
+        const loginUrl = new URL('/login', request.url);
+        loginUrl.searchParams.set('callbackUrl', callbackUrl);
+        return NextResponse.redirect(loginUrl);
     }
-
 }
- 
  
 export const config = {
   matcher: ['/ideas/:ideasAll+', "/add-idea", "/my-ideas", "/my-interactions", "/profile"],
