@@ -4,6 +4,7 @@ import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { getVerificationToken } from "@/lib/verification-token";
+import { buildApiUrl } from "@/lib/api";
 export const metadata = {
   title: "IdeaVault || My Idea Delete",
 }
@@ -19,7 +20,7 @@ const MyIdeaDelete = ({ idea }) => {
         : {}),
     };
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ideasAll/${_id}`, {
+    const res = await fetch(buildApiUrl(`/ideasAll/${_id}`), {
       method: "DELETE",
       headers,
     });

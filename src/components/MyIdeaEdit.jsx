@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 import { FaEdit } from "react-icons/fa";
 import { getVerificationToken } from "@/lib/verification-token";
+import { buildApiUrl } from "@/lib/api";
 
 export const metadata = {
   title: "IdeaVault || My Idea Edit",
@@ -25,7 +26,7 @@ const MyIdeaEdit = ({ idea }) => {
         ...(token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {}),
       };
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ideasAll/${_id}`, {
+      const res = await fetch(buildApiUrl(`/ideasAll/${_id}`), {
         method: "PATCH",
         headers,
         body: JSON.stringify(updatedIdea),

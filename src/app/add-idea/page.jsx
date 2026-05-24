@@ -4,6 +4,7 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useSession } from "../../lib/auth-client";
 import { getVerificationToken } from "@/lib/verification-token";
+import { buildApiUrl } from "@/lib/api";
 
 const AddIdeaPage = () => {
   const {data: session} = useSession();
@@ -18,14 +19,14 @@ const AddIdeaPage = () => {
     const ideaData = Object.fromEntries(formData.entries());
     
     ideaData.userId = session?.user?.id;
-    const apiUrl = process.env.NEXT_PUBLIC_CLIENT_API_URI || "https://ideavault-server-sigma.vercel.app";
+    const apiUrl = buildApiUrl("/ideasAll");
     const token = getVerificationToken();
     const headers = {
       'content-type': 'application/json',
       ...(token ? { Authorization: `Bearer ${token}`, 'x-verification-token': token } : {}),
     };
 
-    const res = await fetch(`${apiUrl}/ideasAll`, {
+    const res = await fetch(apiUrl, {
       method: 'POST',
       headers,
       body:JSON.stringify(ideaData)

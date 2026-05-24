@@ -3,6 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import ViewComment from "./ViewComment";
 import toast from "react-hot-toast";
 import { getVerificationToken } from "@/lib/verification-token";
+import { buildApiUrl } from "@/lib/api";
 
 export const metadata = {
   title: "IdeaVault || Comments",
@@ -38,7 +39,7 @@ const Comments = ({ id, ideaDetail }) => {
       ...(token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {}),
     };
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/comments`, {
+    const res = await fetch(buildApiUrl("/comments"), {
       method: "POST",
       headers,
       body: JSON.stringify(comment),

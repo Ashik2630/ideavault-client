@@ -6,6 +6,7 @@ import DeleteComment from "./DeleteComment";
 import EditComment from "./EditComment";
 import { useLoading } from "@/components/LoadingProvider";
 import { getVerificationToken } from "@/lib/verification-token";
+import { buildApiUrl } from "@/lib/api";
 
 export const metadata = {
   title: "IdeaVault || View Comment",
@@ -23,7 +24,7 @@ const ViewComment = ({ id }) => {
 
         const token = getVerificationToken();
         const headers = token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {};
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/comments/${id}`, { headers });
+        const res = await fetch(buildApiUrl(`/comments/${id}`), { headers });
 
         if (!res.ok) {
           throw new Error("Failed to fetch comments");

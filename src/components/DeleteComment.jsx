@@ -1,12 +1,9 @@
-'use client';
+"use client";
+
 import { AlertDialog, Button } from "@heroui/react";
 import toast from "react-hot-toast";
 import { useLoading } from "@/components/LoadingProvider";
 import { getVerificationToken } from "@/lib/verification-token";
-
-export const metadata = {
-  title: "IdeaVault || Delete Comment",
-}
 
 const DeleteComment = ({ id }) => {
   const { setLoading } = useLoading();
@@ -14,21 +11,39 @@ const DeleteComment = ({ id }) => {
   const handleDelete = async () => {
     try {
       setLoading(true);
+
       const token = getVerificationToken();
+
       const headers = {
-        ...(token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {}),
+        ...(token
+          ? {
+              Authorization: `Bearer ${token}`,
+              "x-verification-token": token,
+            }
+          : {}),
       };
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/comments/${id}`, {
-        method: "DELETE",
-        headers,
-      });
+
+      const res = await fetch(
+        `https://ideavault-server-sigma.vercel.app/comments/${id}`,
+        {
+          method: "DELETE",
+          headers,
+        },
+      );
+
+      const data = await res.json();
+
+      
+
       if (res.ok) {
         toast.success("Comment deleted");
-        window.location.reload(true);
+        window.location.reload();
         return;
       }
-      toast.error("Failed to delete comment");
+
+      toast.error(data?.error || "Failed to delete comment");
     } catch (err) {
+      console.log(err);
       toast.error("Failed to delete comment");
     } finally {
       setLoading(false);
@@ -41,21 +56,28 @@ const DeleteComment = ({ id }) => {
         <Button variant="text" color="danger" size="sm" className="text-danger">
           Delete
         </Button>
+
         <AlertDialog.Backdrop>
           <AlertDialog.Container>
             <AlertDialog.Dialog className="sm:max-w-100">
               <AlertDialog.CloseTrigger />
+
               <AlertDialog.Header>
                 <AlertDialog.Icon status="danger" />
-                <AlertDialog.Heading>Delete Comment permanently?</AlertDialog.Heading>
+                <AlertDialog.Heading>
+                  Delete Comment permanently?
+                </AlertDialog.Heading>
               </AlertDialog.Header>
+
               <AlertDialog.Body>
                 <p>This will permanently delete your comment.</p>
               </AlertDialog.Body>
+
               <AlertDialog.Footer>
                 <Button slot="close" variant="tertiary">
                   Cancel
                 </Button>
+
                 <Button onPress={handleDelete} slot="close" variant="danger">
                   Delete
                 </Button>
