@@ -1,7 +1,6 @@
 import MyIdeaDataCart from "@/components/myIdeasDataCart";
 import NotFoundData from "@/components/NotFountData";
 import { auth } from "@/lib/auth";
-import { buildApiUrl } from "@/lib/api";
 import { headers } from "next/headers";
 export const metadata = {
   title: "IdeaVault || My Ideas",
@@ -13,7 +12,7 @@ const MyIdeasPage = async () => {
   });
   const userId = session?.user.id;
 
-  const res = await fetch(buildApiUrl(`/ideasAll/${userId}`));
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideasAll/${userId}`);
   const payload = await res.json();
   const myIdeasData = Array.isArray(payload)
     ? payload

@@ -12,15 +12,7 @@ export const metadata = {
 
 
 const fetchDetailsData = async (id) => {
-  const { token } = await auth.api.getToken({
-    headers: await headers(),
-  });
-  // console.log(token);
-  const res = await fetch(`${process.env.NEXT_SERVER_URL}/ideas/${id}`, {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`);
   const data = await res.json();
   return data;
 };
@@ -28,11 +20,6 @@ const fetchDetailsData = async (id) => {
 const IdeaDetailsPage = async ({ params }) => {
   const { id } = await params;
   const ideaDetail = await fetchDetailsData(id);
-
-  const tokenData = await auth.api.getToken({
-    headers: await headers(),
-  });
-  const token = tokenData?.token || null;
   const {
     ideaTitle,
     shortDescription,

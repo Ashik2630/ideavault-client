@@ -14,19 +14,7 @@ export async function proxy(request) {
         loginUrl.searchParams.set('callbackUrl', callbackUrl);
         return NextResponse.redirect(loginUrl);
     }
-    // session exists -> attempt to get token and inject into request headers
-    try {
-        const tokenData = await auth.api.getToken({ headers: await headers() });
-        const token = tokenData?.token;
-        if (token) {
-            const incoming = await headers();
-            const newHeaders = new Headers(incoming);
-            newHeaders.set('x-verification-token', token);
-            return NextResponse.next({ request: { headers: newHeaders } });
-        }
-    } catch (err) {
-        // if token retrieval fails, just continue without injection
-    }
+
 }
  
 export const config = {

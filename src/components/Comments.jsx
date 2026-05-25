@@ -2,8 +2,6 @@
 import { authClient } from "@/lib/auth-client";
 import ViewComment from "./ViewComment";
 import toast from "react-hot-toast";
-import { getVerificationToken } from "@/lib/verification-token";
-import { buildApiUrl } from "@/lib/api";
 
 export const metadata = {
   title: "IdeaVault || Comments",
@@ -33,15 +31,13 @@ const Comments = ({ id, ideaDetail }) => {
     };
 
 
-    const token = getVerificationToken();
-    const headers = {
-      "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {}),
-    };
+   
 
-    const res = await fetch(buildApiUrl("/comments"), {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`, {
       method: "POST",
-      headers,
+      headers:{
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(comment),
     });
     if(res.ok) {

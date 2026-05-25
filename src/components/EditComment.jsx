@@ -3,8 +3,7 @@
 import { Button, Label, Modal, Surface, TextField } from "@heroui/react";
 import toast from "react-hot-toast";
 import { useLoading } from "@/components/LoadingProvider";
-import { getVerificationToken } from "@/lib/verification-token";
-import { buildApiUrl } from "@/lib/api";
+
 
 export const metadata = {
   title: "IdeaVault || Edit Comment",
@@ -22,14 +21,10 @@ const EditComment = ({ id, text }) => {
 
     try {
       setLoading(true);
-      const token = getVerificationToken();
-      const headers = {
-        "Content-Type": "application/json",
-        ...(token ? { Authorization: `Bearer ${token}`, "x-verification-token": token } : {}),
-      };
-      const res = await fetch(buildApiUrl(`/comments/${id}`), {
+      
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${id}`, {
         method: "PATCH",
-        headers,
+        headers: { "content-type": "application/json" },
         body: JSON.stringify(updatedComment),
       });
 

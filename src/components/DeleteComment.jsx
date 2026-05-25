@@ -3,7 +3,6 @@
 import { AlertDialog, Button } from "@heroui/react";
 import toast from "react-hot-toast";
 import { useLoading } from "@/components/LoadingProvider";
-import { getVerificationToken } from "@/lib/verification-token";
 
 const DeleteComment = ({ id }) => {
   const { setLoading } = useLoading();
@@ -12,22 +11,12 @@ const DeleteComment = ({ id }) => {
     try {
       setLoading(true);
 
-      const token = getVerificationToken();
-
-      const headers = {
-        ...(token
-          ? {
-              Authorization: `Bearer ${token}`,
-              "x-verification-token": token,
-            }
-          : {}),
-      };
+  
 
       const res = await fetch(
-        `https://ideavault-server-sigma.vercel.app/comments/${id}`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${id}`,
         {
           method: "DELETE",
-          headers,
         },
       );
 
