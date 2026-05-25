@@ -6,55 +6,55 @@
 
 IdeaVault Live Site:
 
-🚀 Features
-🔐 JWT Authentication with Email/Password & Google Login
-💡 Users can create, update, and delete startup ideas
-💬 Interactive comment system with edit & delete functionality
-🔍 Search ideas by title and filter by category
-🌙 Dark & Light theme toggle from navbar
-📱 Fully responsive for Mobile, Tablet, and Desktop
-⚡ Protected private routes with persistent login
-🎯 Trending Ideas section on homepage
-🧑 User profile management system
-🔔 Toast notifications for all CRUD operations and authentication
+1. 🚀 Features
+2.  🔐 JWT Authentication with Email/Password & Google Login
+3. 💡 Users can create, update, and delete startup ideas
+4. 💬 Interactive comment system with edit & delete functionality
+5. 🔍 Search ideas by title and filter by category
+6. 🌙 Dark & Light theme toggle from navbar
+7. 📱 Fully responsive for Mobile, Tablet, and Desktop
+8. ⚡ Protected private routes with persistent login
+9. 🎯 Trending Ideas section on homepage
+10. 🧑 User profile management system
+11. 🔔 Toast notifications for all CRUD operations and authentication
 
  ### 🛠️ Tech Stack:
-Frontend
-Next.js
-React.js
-Tailwind CSS
-HeroUI / DaisyUI
-Firebase Authentication
-Axios
-React Hot Toast
-Backend
-Node.js
-Express.js
-MongoDB
-JWT Authentication
-CORS
-dotenv
+## Frontend
+1. Next.js
+2. React.js
+3. Tailwind CSS
+4. HeroUI / DaisyUI
+5. Firebase Authentication
+6. React Hot Toast
+
+# Backend
+1. Node.js
+2. Express.js
+3. MongoDB
+4. JWT Authentication
+5. CORS
+6. dotenv
 
 ### 🔒 Authentication Features:
-Email & Password Login
-Google Authentication
-JWT Token Generation
-Protected Routes
-Persistent User Session
-Secure API Authorization
+1. Email & Password Login
+2. Google Authentication
+3. JWT Token Generation
+4. Protected Routes
+5. Persistent User Session
+6. Secure API Authorization
 
 ### 📌 Core Functionalities:
-🏠 Home Page
+# 🏠 Home Page
 Banner Slider
 Trending Ideas Section
 Extra Creative Sections
 CTA Buttons
-💡 Ideas Page
+# 💡 Ideas Page
 All ideas in responsive grid layout
 Search by title
 Category filter
 View Details functionality
-📝 Add Idea
+# 📝 Add Idea
 
 Authenticated users can:
 
@@ -103,6 +103,7 @@ cors
 dotenv
 
 
-👨‍💻 Developer
+### 👨‍💻 Developer:
 
 Developed by Md. Ashikur Rahman
+
