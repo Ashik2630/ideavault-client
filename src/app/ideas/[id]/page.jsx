@@ -10,7 +10,6 @@ export const metadata = {
   title: "IdeaVault || IdeaDetailsPage",
 }
 
-
 const fetchDetailsData = async (id) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`);
   const data = await res.json();
@@ -49,7 +48,7 @@ const IdeaDetailsPage = async ({ params }) => {
       <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-start">
         <div className="max-w-4xl w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden p-6 md:p-8">
           {/* Header Image */}
-          <div className="w-full h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 relative mb-6">
+          <div className="w-full h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 relative mb-5">
             <Image
               src={imageUrl}
               alt={ideaTitle}
